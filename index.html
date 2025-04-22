@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+  <title>潘佳伊，生日快乐！</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom, #ffecd2, #fcb69f);
+      overflow: hidden;
+    }
+
+    .emoji {
+      position: absolute;
+      top: -20px;
+      font-size: 24px;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+      }
+    }
+  </style>
+</head>
+
+<body class="flex flex-col min-h-screen">
+<header class="text-center py-10">
+  <h1 class="text-4xl font-bold text-pink-700">🎉潘佳伊，6岁生日快乐！🎉</h1>
+</header>
+<main class="flex-grow flex justify-center items-center px-4">
+  <div class="bg-white p-8 rounded-lg shadow-md w-full max-w-2xl space-y-6">
+    <p class="text-lg text-gray-700">在这个特别的日子里，愿你的生活如诗如画，充满无尽的欢乐和惊喜！</p>
+    <div class="text-center">
+      <button id="wishButton"
+              class="bg-pink-600 hover:bg-pink-700 text-white py-2 px-4 rounded-md transition duration-300">
+        给潘佳伊送个祝福
+      </button>
+    </div>
+    <div id="wishMessage" class="hidden text-center text-green-600 text-lg">
+      祝你岁岁常欢愉，年年皆胜意！🎁
+    </div>
+    <div class="text-center">
+      <img src="PJY/img/A.jpg" alt="生日图片"
+           class="mx-auto rounded-md shadow-md hover:scale-105 transition duration-300">
+    </div>
+  </div>
+</main>
+<footer class="text-center py-4 text-gray-600">
+  <p>&copy; 2025 生日祝福</p>
+</footer>
+<script>
+  const wishButton = document.getElementById('wishButton');
+  const wishMessage = document.getElementById('wishMessage');
+
+  wishButton.addEventListener('click', () => {
+    wishMessage.classList.remove('hidden');
+    wishButton.disabled = true;
+    wishButton.textContent = '祝福已送出！';
+  });
+
+  const emojis = ['🎉', '🎂', '✨', '🎁', '🎈'];
+  const numberOfEmojis = 500;
+
+  function createEmoji() {
+    const emoji = document.createElement('span');
+    emoji.classList.add('emoji');
+    emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    emoji.style.left = Math.random() * window.innerWidth + 'px';
+    emoji.style.animationDuration = Math.random() * 3 + 2 + 's';
+    document.body.appendChild(emoji);
+
+    setTimeout(() => {
+      emoji.remove();
+    }, 5000);
+  }
+
+  for (let i = 0; i < numberOfEmojis; i++) {
+    setTimeout(createEmoji, i * 100);
+  }
+</script>
+</body>
+
+</html>
